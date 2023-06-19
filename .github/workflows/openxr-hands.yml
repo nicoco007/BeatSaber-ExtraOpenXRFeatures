@@ -1,0 +1,41 @@
+name: OpenXR Hands
+
+on:
+  push:
+    paths:
+    - .github/workflows/build-openxr-hands.yml
+    - OpenXRHands/**
+    - ExtraOpenXRFeatures.sln
+    branches:
+    - '**'
+    tags:
+    - openxr-hands/*
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+    - name: Check out
+      uses: actions/checkout@v4
+
+    - name: Set up Beat Saber
+      uses: nicoco007/setup-beat-saber@main
+      with:
+        access-token: ${{ secrets.PRIVATE_GITHUB_TOKEN }}
+        manifest: ${{ github.workspace }}\OpenXRHands\manifest.json
+        tag-format: openxr-hands/v{0}
+        aliases: '{"Unity.XR.Hands": "XR Hands"}'
+
+    - name: Add NuGet source
+      run: dotnet nuget update source "nicoco007 GitHub Packages" --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+
+    - name: Build Release
+      id: build-release
+      run: dotnet build ${{ github.workspace }}\OpenXRHands\OpenXRHands.csproj -c Release
+
+    - name: Upload Release
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.build-release.outputs.artifact-name }}
+        path: ${{ steps.build-release.outputs.artifact-path }}

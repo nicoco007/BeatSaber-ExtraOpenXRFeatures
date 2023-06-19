@@ -1,0 +1,34 @@
+# Align naming of members in classes that inherit InputSystem classes
+[Features/*.cs]
+
+# Naming rules
+
+dotnet_naming_rule.static_readonly_fields_should_be_camel_case_with_k.severity = warning
+dotnet_naming_rule.static_readonly_fields_should_be_camel_case_with_k.symbols = static_readonly_fields
+dotnet_naming_rule.static_readonly_fields_should_be_camel_case_with_k.style = pascal_case
+
+dotnet_naming_rule.constants_should_be_camel_case.severity = warning
+dotnet_naming_rule.constants_should_be_camel_case.symbols = constants
+dotnet_naming_rule.constants_should_be_camel_case.style = camel_case
+
+# Symbol specifications
+
+dotnet_naming_symbols.static_readonly_fields.applicable_kinds = field
+dotnet_naming_symbols.static_readonly_fields.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.static_readonly_fields.required_modifiers = static, readonly
+
+dotnet_naming_symbols.constants.applicable_kinds = field
+dotnet_naming_symbols.constants.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.constants.required_modifiers = const
+
+# Naming styles
+
+dotnet_naming_style.pascal_case.required_prefix = 
+dotnet_naming_style.pascal_case.required_suffix = 
+dotnet_naming_style.pascal_case.word_separator = 
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_style.camel_case.required_prefix = 
+dotnet_naming_style.camel_case.required_suffix = 
+dotnet_naming_style.camel_case.word_separator = 
+dotnet_naming_style.camel_case.capitalization = camel_case
