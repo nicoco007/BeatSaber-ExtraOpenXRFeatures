@@ -1,0 +1,49 @@
+name: OpenXRTrackerProfiles
+
+on:
+  push:
+    paths:
+    - .github/workflows/build-openxr-tracker-profiles.yml
+    - OpenXRTrackerProfiles/**
+    - ExtraOpenXRFeatures.sln
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+    - name: Check out
+      uses: actions/checkout@v3
+
+    - name: Set up environment
+      run: ${{ github.workspace }}\.github\workflows\set_up_env.ps1 "${{ github.workspace }}\OpenXRTrackerProfiles\manifest.json"
+
+    - name: Fetch Beat Saber Bindings
+      run: git clone https://${{ secrets.PRIVATE_GITHUB_TOKEN }}@github.com/nicoco007/BeatSaberBindings --branch v${{ env.GAME_VERSION }} --single-branch '${{ runner.temp }}\BeatSaberBindings\Beat Saber_Data\Managed'
+
+    - name: Download dependencies
+      uses: nicoco007/download-beatmods-deps@main
+      with:
+        manifest: ${{ github.workspace }}\OpenXRTrackerProfiles\manifest.json
+        path: ${{ runner.temp }}\BeatSaberBindings
+
+    - name: Add NuGet source
+      run: dotnet nuget add source --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text "https://nuget.pkg.github.com/nicoco007/index.json"
+  
+    - name: Build Debug
+      run: dotnet publish ${{ github.workspace }}\OpenXRTrackerProfiles\OpenXRTrackerProfiles.csproj -c Debug -p:BeatSaberDir=${{ runner.temp }}\BeatSaberBindings
+
+    - name: Upload Debug
+      uses: actions/upload-artifact@v3
+      with:
+        name: OpenXRTrackerProfiles-${{ env.ZIP_VERSION }}-DEBUG
+        path: ${{ github.workspace }}\OpenXRTrackerProfiles\bin\Debug\publish
+
+    - name: Build Release
+      run: dotnet publish ${{ github.workspace }}\OpenXRTrackerProfiles\OpenXRTrackerProfiles.csproj -c Release -p:BeatSaberDir=${{ runner.temp }}\BeatSaberBindings
+
+    - name: Upload Release
+      uses: actions/upload-artifact@v3
+      with:
+        name: OpenXRTrackerProfiles-${{ env.ZIP_VERSION }}-RELEASE
+        path: ${{ github.workspace }}\OpenXRTrackerProfiles\bin\Release\publish

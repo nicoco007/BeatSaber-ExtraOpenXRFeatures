@@ -1,0 +1,1732 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Unity.XR.Hands</name>
+    </assembly>
+    <members>
+        <member name="T:UnityEngine.XR.Hands.XRHandJointTrackingState">
+            <summary>
+            Represents the values being tracked for a particular joint.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointTrackingState.None">
+            <summary>
+            No data is currently being tracked for a joint.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointTrackingState.Radius">
+            <summary>
+            Radius of current joint.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointTrackingState.Pose">
+            <summary>
+            Pose of current joint.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointTrackingState.LinearVelocity">
+            <summary>
+            Linear velocity of current joint.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointTrackingState.AngularVelocity">
+            <summary>
+            Angular velocity of current joint.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointTrackingState.WillNeverBeValid">
+            <summary>
+            Joint was marked as not being part of the hand layout for the current provider.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandJointID">
+            <summary>
+            Represents the type of a hand joint. If you wish to convert it to an
+            index, call <c>.ToIndex()</c> on the joint ID.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.Invalid">
+            <summary>
+            Invalid ID.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.BeginMarker">
+            <summary>
+            Marks the beginning of joints, or start of an array of data related
+            to them. Casting this to an integer type will not result in a
+            correct start. Use <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.ToIndex(UnityEngine.XR.Hands.XRHandJointID)"/> instead.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.Wrist">
+            <summary>
+            Joint for the wrist.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.Palm">
+            <summary>
+            Represents the palm of the hand.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.ThumbMetacarpal">
+            <summary>
+            Metacarpal joint of the thumb.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.ThumbProximal">
+            <summary>
+            Proximal joint of the thumb.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.ThumbDistal">
+            <summary>
+            Distal joint of the thumb.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.ThumbTip">
+            <summary>
+            Tip of the thumb.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.IndexMetacarpal">
+            <summary>
+            Metacarpal joint of the index finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.IndexProximal">
+            <summary>
+            Proximal joint of the index finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.IndexIntermediate">
+            <summary>
+            Intermediate joint of the index finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.IndexDistal">
+            <summary>
+            Distal joint of the index finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.IndexTip">
+            <summary>
+            Tip of the index finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.MiddleMetacarpal">
+            <summary>
+            Metacarpal joint of the middle finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.MiddleProximal">
+            <summary>
+            Proximal joint of the middle finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.MiddleIntermediate">
+            <summary>
+            Intermediate joint of the middle finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.MiddleDistal">
+            <summary>
+            Distal joint of the middle finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.MiddleTip">
+            <summary>
+            Tip of the middle finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.RingMetacarpal">
+            <summary>
+            Metacarpal joint of the ring finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.RingProximal">
+            <summary>
+            Proximal joint of the ring finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.RingIntermediate">
+            <summary>
+            Intermediate joint of the ring finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.RingDistal">
+            <summary>
+            Distal joint of the ring finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.RingTip">
+            <summary>
+            Tip of the ring finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.LittleMetacarpal">
+            <summary>
+            Metacarpal joint of the little finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.LittleProximal">
+            <summary>
+            Proximal joint of the little finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.LittleIntermediate">
+            <summary>
+            Intermediate joint of the little finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.LittleDistal">
+            <summary>
+            Distal joint of the little finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.LittleTip">
+            <summary>
+            Tip of the little finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandJointID.EndMarker">
+            <summary>
+            Marks the end of joints, or size of an array of data related to
+            them. Casting this to an integer type will not result in a correct
+            count. Use <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.ToIndex(UnityEngine.XR.Hands.XRHandJointID)"/> instead.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.Handedness">
+            <summary>
+            Represents which hand is being referred to.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.Handedness.Invalid">
+            <summary>
+            Invalid hand. Will never be usable. Use <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.leftHand"/>
+            or <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.rightHand"/> to obtain a valid hand.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.Handedness.Left">
+            <summary>
+            Left hand.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.Handedness.Right">
+            <summary>
+            Right hand.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandFingerID">
+            <summary>
+            Represents a finger on either hand. Useful with the
+            <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.GetFrontJointID(UnityEngine.XR.Hands.XRHandFingerID)"/> and
+            <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.GetBackJointID(UnityEngine.XR.Hands.XRHandFingerID)"/> APIs.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandFingerID.Thumb">
+            <summary>
+            Represents the thumb.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandFingerID.Index">
+            <summary>
+            Represents the index finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandFingerID.Middle">
+            <summary>
+            Represents the middle finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandFingerID.Ring">
+            <summary>
+            Represents the ring finger.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandFingerID.Little">
+            <summary>
+            Represents the little finger.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandJointIDUtility">
+            <summary>
+            Houses extension and utility methods for <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/>.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJointIDUtility.ToIndex(UnityEngine.XR.Hands.XRHandJointID)">
+            <summary>
+            Call <c>.ToIndex()</c> on a <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> to get its
+            corresponding index into an array of joint data.
+            </summary>
+            <param name="jointId">ID of the joint to convert to an index.</param>
+            <returns>
+            The index matching the ID passed in.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJointIDUtility.FromIndex(System.Int32)">
+            <summary>
+            Call this to get the corresponding <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> from
+            an index into an array of associated data.
+            </summary>
+            <param name="index">Index to convert to an ID.</param>
+            <returns>
+            The ID matching the index passed in.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJointIDUtility.GetFrontJointID(UnityEngine.XR.Hands.XRHandFingerID)">
+            <summary>
+            Gets the metacarpal <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> of a given <see cref="T:UnityEngine.XR.Hands.XRHandFingerID"/>.
+            </summary>
+            <param name="fingerId">ID of the finger of which you want the first <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/>.</param>
+            <returns>
+            First <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> for the given finger in an <see cref="T:UnityEngine.XR.Hands.XRHand"/>
+            object's list of joints.
+            </returns>
+            <example>
+            You can use <c>GetFrontJointID</c> and <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.GetBackJointID(UnityEngine.XR.Hands.XRHandFingerID)"/> to iterate
+            through the joints of a specific finger:
+            <code>
+            <![CDATA[
+                for(var i = XRHandFingerID.Thumb.GetFrontJointID().ToIndex(); // metacarpal
+                        i <= XRHandFingerID.Thumb.GetBackJointID().ToIndex();  // tip
+                        i++)
+                {
+                    // hand is an XRHand object
+                    XRHandJoint fingerJoint = hand.GetJoint(XRHandJointIDUtility.FromIndex(i));
+                    // Use data...
+                }
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJointIDUtility.GetBackJointID(UnityEngine.XR.Hands.XRHandFingerID)">
+            <summary>
+            Gets the tip <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> of a given <see cref="T:UnityEngine.XR.Hands.XRHandFingerID"/>.
+            </summary>
+            <param name="fingerId">ID of the finger you want the last <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> of.</param>
+            <returns>Last <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> for the given finger in an <see cref="T:UnityEngine.XR.Hands.XRHand"/>
+            object's list of joints.</returns>
+            <remarks>Use with <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.GetFrontJointID(UnityEngine.XR.Hands.XRHandFingerID)"/> to iterate through the joints
+            of a finger.</remarks>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.MetaAimFlags">
+            <summary>
+            The flags in the extension for each hand that can be read from
+            <see cref="P:UnityEngine.XR.Hands.MetaAimHand.aimFlags"/> and casting to this type.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.None">
+            <summary>
+            No flags are valid.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.Computed">
+            <summary>
+            Data for this hand has been computed.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.Valid">
+            <summary>
+            The aim pose is generally pointed away from the face and is valid
+            for use with UI.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.IndexPinching">
+            <summary>
+            Indicates whether the index finger is pinching with the thumb.
+            Only valid when the pinch strength retrieved from
+            <see cref="P:UnityEngine.XR.Hands.MetaAimHand.pinchStrengthIndex"/> is
+            at a full strength of <c>1.0</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.MiddlePinching">
+            <summary>
+            Indicates whether the middle finger is pinching with the thumb.
+            Only valid when the pinch strength retrieved from
+            <see cref="P:UnityEngine.XR.Hands.MetaAimHand.pinchStrengthMiddle"/> is
+            at a full strength of <c>1.0</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.RingPinching">
+            <summary>
+            Indicates whether the ring finger is pinching with the thumb.
+            Only valid when the pinch strength retrieved from
+            <see cref="P:UnityEngine.XR.Hands.MetaAimHand.pinchStrengthRing"/> is
+            at a full strength of <c>1.0</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.LittlePinching">
+            <summary>
+            Indicates whether the little finger is pinching with the thumb.
+            Only valid when the pinch strength retrieved from
+            <see cref="P:UnityEngine.XR.Hands.MetaAimHand.pinchStrengthLittle"/> is
+            at a full strength of <c>1.0</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.SystemGesture">
+            <summary>
+            Indicates whether a system gesture is being performed (when the
+            palm of the hand is facing the headset).
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.DominantHand">
+            <summary>
+            Indicates whether the hand these flags were retrieved from is
+            the dominant hand.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimFlags.MenuPressed">
+            <summary>
+            Indicates whether the menu gesture button is pressed.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.MetaAimHand">
+            <summary>
+            A <see cref="T:UnityEngine.InputSystem.TrackedDevice"/> based off the data exposed in the
+            <see href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XR_FB_hand_tracking_aim">
+            Meta Hand Tracking Aim extension</see>. Enabled through [Meta Hand Tracking Aim](xref:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim)
+            or by enabling hand-tracking in the Oculus plug-in if the Input System
+            back-end is enabled.
+            </summary>
+            <remarks>
+            For this type to function, you must enable hand-tracking and be running
+            with either the OpenXR or Oculus plug-in.
+            
+            The <see cref="P:UnityEngine.InputSystem.TrackedDevice.devicePosition"/> and
+            <see cref="P:UnityEngine.InputSystem.TrackedDevice.deviceRotation"/> inherited from <see cref="T:UnityEngine.InputSystem.TrackedDevice"/>
+            represent the aim pose. You can use these values to discover the target for pinch gestures,
+            when appropriate. 
+            
+            Use the [XROrigin](xref:Unity.XR.CoreUtils.XROrigin) in the scene to position and orient
+            the device properly. If you are using this data to set the Transform of a GameObject in
+            the scene hierarchy, you can set the local position and rotation of the Transform and make
+            it a child of the <c>CameraOffset</c> object below the <c>XROrigin</c>. Otherwise, you can use the
+            Transform of the <c>CameraOffset</c> to transform the data into world space.
+            </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.left">
+            <summary>
+            The left-hand <see cref="T:UnityEngine.XR.InputDevice"/> that contains
+            <see cref="T:UnityEngine.InputSystem.InputControl"/>s that surface data in the Meta Hand
+            Tracking Aim extension.
+            </summary>
+            <remarks>
+            It is recommended that you treat this as read-only, and do not set
+            it yourself. It will be set for you if hand-tracking has been
+            enabled and if you are running with either the OpenXR or Oculus
+            plug-in.
+            </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.right">
+            <summary>
+            The right-hand <see cref="T:UnityEngine.XR.InputDevice"/> that contains
+            <see cref="T:UnityEngine.InputSystem.InputControl"/>s that surface data in the Meta Hand
+            Tracking Aim extension.
+            </summary>
+            <remarks>
+            It is recommended that you treat this as read-only, and do not set
+            it yourself. It will be set for you if hand-tracking has been
+            enabled and if you are running with either the OpenXR or Oculus
+            plug-in.
+            </remarks>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.MetaAimHand.pressThreshold">
+            <summary>
+            The pinch amount required to register as being pressed for the
+            purposes of <see cref="P:UnityEngine.XR.Hands.MetaAimHand.indexPressed"/>, <see cref="P:UnityEngine.XR.Hands.MetaAimHand.middlePressed"/>,
+            <see cref="P:UnityEngine.XR.Hands.MetaAimHand.ringPressed"/>, and <see cref="P:UnityEngine.XR.Hands.MetaAimHand.littlePressed"/>.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.indexPressed">
+            <summary>
+            A [ButtonControl](xref:UnityEngine.InputSystem.Controls.ButtonControl)
+            that represents whether the pinch between the index finger and
+            the thumb is mostly pressed (greater than a threshold of <c>0.8</c>
+            contained in <see cref="F:UnityEngine.XR.Hands.MetaAimHand.pressThreshold"/>).
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.middlePressed">
+            <summary>
+            A [ButtonControl](xref:UnityEngine.InputSystem.Controls.ButtonControl)
+            that represents whether the pinch between the middle finger and
+            the thumb is mostly pressed (greater than a threshold of <c>0.8</c>
+            contained in <see cref="F:UnityEngine.XR.Hands.MetaAimHand.pressThreshold"/>).
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.ringPressed">
+            <summary>
+            A [ButtonControl](xref:UnityEngine.InputSystem.Controls.ButtonControl)
+            that represents whether the pinch between the ring finger and
+            the thumb is mostly pressed (greater than a threshold of <c>0.8</c>
+            contained in <see cref="F:UnityEngine.XR.Hands.MetaAimHand.pressThreshold"/>).
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.littlePressed">
+            <summary>
+            A [ButtonControl](xref:UnityEngine.InputSystem.Controls.ButtonControl)
+            that represents whether the pinch between the little finger and
+            the thumb is mostly pressed (greater than a threshold of <c>0.8</c>
+            contained in <see cref="F:UnityEngine.XR.Hands.MetaAimHand.pressThreshold"/>).
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.aimFlags">
+            <summary>
+            Cast the result of reading this to <see cref="T:UnityEngine.XR.Hands.MetaAimFlags"/> to examine the value.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.pinchStrengthIndex">
+            <summary>
+            An [AxisControl](xref:UnityEngine.InputSystem.Controls.AxisControl)
+            that represents the pinch strength between the index finger and
+            the thumb.
+            </summary>
+            <remarks>
+            A value of <c>0</c> denotes no pinch at all, while a value of
+            <c>1</c> denotes a full pinch.
+            </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.pinchStrengthMiddle">
+            <summary>
+            An [AxisControl](xref:UnityEngine.InputSystem.Controls.AxisControl)
+            that represents the pinch strength between the middle finger and
+            the thumb.
+            </summary>
+            <remarks>
+            A value of <c>0</c> denotes no pinch at all, while a value of
+            <c>1</c> denotes a full pinch.
+            </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.pinchStrengthRing">
+            <summary>
+            An [AxisControl](xref:UnityEngine.InputSystem.Controls.AxisControl)
+            that represents the pinch strength between the ring finger and
+            the thumb.
+            </summary>
+            <remarks>
+            A value of <c>0</c> denotes no pinch at all, while a value of
+            <c>1</c> denotes a full pinch.
+            </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.MetaAimHand.pinchStrengthLittle">
+            <summary>
+            An [AxisControl](xref:UnityEngine.InputSystem.Controls.AxisControl)
+            that represents the pinch strength between the little finger and
+            the thumb.
+            </summary>
+            <remarks>
+            A value of <c>0</c> denotes no pinch at all, while a value of
+            <c>1</c> denotes a full pinch.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.MetaAimHand.FinishSetup">
+            <summary>
+            Perform final initialization tasks after the control hierarchy has been put into place.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.MetaAimHand.CreateHand(UnityEngine.XR.InputDeviceCharacteristics)">
+            <summary>
+            Creates a <see cref="T:UnityEngine.XR.Hands.MetaAimHand"/> and adds it to the Input System.
+            </summary>
+            <param name="extraCharacteristics">
+            Additional characteristics to build the hand device with besides
+            <see cref="F:UnityEngine.XR.InputDeviceCharacteristics.HandTracking"/> and <see cref="F:UnityEngine.XR.InputDeviceCharacteristics.TrackedDevice"/>.
+            </param>
+            <returns>
+            A <see cref="T:UnityEngine.XR.Hands.MetaAimHand"/> retrieved from
+            <see cref="M:UnityEngine.InputSystem.InputSystem.AddDevice(UnityEngine.InputSystem.Layouts.InputDeviceDescription)"/>.
+            </returns>
+            <remarks>
+            It is recommended that you do not call this yourself. It will be
+            called for you at the appropriate time if hand-tracking has been
+            enabled and if you are running with either the OpenXR or Oculus
+            plug-in.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.MetaAimHand.UpdateHand(System.Boolean,UnityEngine.XR.Hands.MetaAimFlags,UnityEngine.Pose,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Queues update events in the Input System based on the supplied hand.
+            It is not recommended that you call this directly. This will be called
+            for you when appropriate.
+            </summary>
+            <param name="isHandRootTracked">
+            Whether the hand root pose is valid.
+            </param>
+            <param name="aimFlags">
+            The aim flags to update in the Input System.
+            </param>
+            <param name="aimPose">
+            The aim pose to update in the Input System. Used if the hand root is tracked.
+            </param>
+            <param name="pinchIndex">
+            The pinch strength for the index finger to update in the Input System.
+            </param>
+            <param name="pinchMiddle">
+            The pinch strength for the middle finger to update in the Input System.
+            </param>
+            <param name="pinchRing">
+            The pinch strength for the ring finger to update in the Input System.
+            </param>
+            <param name="pinchLittle">
+            The pinch strength for the little finger to update in the Input System.
+            </param>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.MetaAimHand.UpdateHand(UnityEngine.XR.Hands.MetaAimFlags,UnityEngine.Pose,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Queues update events in the Input System based on the supplied hand.
+            It is not recommended that you call this directly. This will be called
+            for you when appropriate.
+            </summary>
+            <param name="aimFlags">
+            The aim flags to update in the Input System.
+            </param>
+            <param name="aimPose">
+            The aim pose to update in the Input System.
+            </param>
+            <param name="pinchIndex">
+            The pinch strength for the index finger to update in the Input System.
+            </param>
+            <param name="pinchMiddle">
+            The pinch strength for the middle finger to update in the Input System.
+            </param>
+            <param name="pinchRing">
+            The pinch strength for the ring finger to update in the Input System.
+            </param>
+            <param name="pinchLittle">
+            The pinch strength for the little finger to update in the Input System.
+            </param>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.OpenXR.HandTracking">
+            <summary>
+            This <see cref="T:UnityEngine.XR.OpenXR.Features.OpenXRInteractionFeature"/> enables the use of
+            hand-tracking data in OpenXR through the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            It enables <see href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XR_EXT_hand_tracking">
+            XR_EXT_hand_tracking</see> in the underlying runtime. To retrieve hand
+            data, use the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/> retrieved from
+            <see cref="P:UnityEngine.XR.Hands.OpenXR.HandTracking.subsystem"/>.
+            </summary>
+            <remarks>
+            For this extension to be available, you must install the
+            <see href="https://docs.unity3d.com/Packages/com.unity.xr.hands@latest/manual/index.html">
+            XR Hands package</see>.
+            </remarks>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.HandTracking.featureId">
+            <summary>
+            The feature ID string. This is used to give the feature a well known
+            ID for reference.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.HandTracking.extensionString">
+            <summary>
+            The OpenXR Extension string. OpenXR uses this to check if this
+            extension is available or enabled. See
+            <see href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_EXT_hand_tracking">hand interaction extension</see>
+            documentation for more information on this OpenXR extension.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.HandTracking.subsystem">
+            <summary>
+            The <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/> that retrieves hand data from its
+            provider. Will only be valid when this feature is enabled and
+            running. To subscribe to updates, use <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.handsUpdated"/>.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.HandTracking.OnSystemChange(System.UInt64)">
+            <summary>See <see cref="M:UnityEngine.XR.OpenXR.Features.OpenXRFeature.OnSystemChange(System.UInt64)"/>.</summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.HandTracking.OnInstanceCreate(System.UInt64)">
+            <summary>See <see cref="M:UnityEngine.XR.OpenXR.Features.OpenXRFeature.OnInstanceCreate(System.UInt64)"/>.</summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.HandTracking.OnAppSpaceChange(System.UInt64)">
+            <summary>See <see cref="M:UnityEngine.XR.OpenXR.Features.OpenXRFeature.OnAppSpaceChange(System.UInt64)"/>.</summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.HandTracking.OnSessionCreate(System.UInt64)">
+            <summary>
+            Called after xrCreateSession.
+            </summary>
+            <remarks>
+            Creates an <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/> with the OpenXR provider.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.HandTracking.OnSubsystemStart">
+            <summary>
+            Called after the OpenXR loader has started its subsystems.
+            </summary>
+            <remarks>
+            Starts the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/> and automatic updating for
+            it. To subscribe to updates, use <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.handsUpdated"/>.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.HandTracking.OnSubsystemStop">
+            <summary>
+            Called before the OpenXR loader stops its subsystems.
+            </summary>
+            <remarks>
+            Stops the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/> and automatic updating for it.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.HandTracking.OnSubsystemDestroy">
+            <summary>
+            Called before the OpenXR loader destroys its subsystems.
+            </summary>
+            <remarks>
+            Destroys the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.HandTracking.HookGetInstanceProcAddr(System.IntPtr)">
+            <see cref="M:UnityEngine.XR.OpenXR.Features.OpenXRFeature.HookGetInstanceProcAddr(System.IntPtr)"/>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim">
+            <summary>
+            This <see cref="T:UnityEngine.XR.OpenXR.Features.OpenXRInteractionFeature"/> enables the use of Meta's
+            hand-tracking aim data in OpenXR. It will not work without also enabling
+            the <see cref="T:UnityEngine.XR.Hands.OpenXR.HandTracking"/> feature. It enables
+            <see href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XR_FB_hand_tracking_aim">
+            XR_FB_hand_tracking_aim</see> in the underlying runtime. This creates
+            new <see cref="T:UnityEngine.XR.InputDevice"/>s with the <see cref="F:UnityEngine.XR.InputDeviceCharacteristics.HandTracking"/>
+            characteristic where the <see cref="P:UnityEngine.InputSystem.TrackedDevice.devicePosition"/>
+            and <see cref="P:UnityEngine.InputSystem.TrackedDevice.deviceRotation"/> represent the aim pose
+            exposed by this extension.
+            </summary>
+            <remarks>
+            For this extension to be available, you must install the
+            <see href="https://docs.unity3d.com/Packages/com.unity.xr.hands@latest/manual/index.html">
+            XR Hands package</see>.
+            </remarks>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.featureId">
+            <summary>
+            The feature ID string. This is used to give the feature a well known
+            ID for reference.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.extensionString">
+            <summary>
+            The OpenXR Extension string. OpenXR uses this to check if this
+            extension is available or enabled. See
+            <see href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XR_FB_hand_tracking_aim">Meta hand-tracking aim</see>
+            documentation for more information on this OpenXR extension.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.deviceProductName">
+            <summary>
+            The device product name used when creating the <see cref="T:UnityEngine.XR.InputDevice"/>s
+            that represent each hand in the extension.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.deviceManufacturerName">
+            <summary>
+            The device manufacturer name used when creating the <see cref="T:UnityEngine.XR.InputDevice"/>s
+            that represent each hand in the extension.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.OnSubsystemStart">
+            <summary>See <see cref="M:UnityEngine.XR.OpenXR.Features.OpenXRFeature.OnSubsystemStart"/>.</summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.OnSubsystemStop">
+            <summary>See <see cref="M:UnityEngine.XR.OpenXR.Features.OpenXRFeature.OnSubsystemStop"/>.</summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.leftHand">
+            <summary>
+            (Deprecated) The left-hand <see cref="T:UnityEngine.XR.InputDevice"/> that contains
+            <see cref="T:UnityEngine.InputSystem.InputControl"/>s that surface data in the Meta Hand
+            Tracking Aim extension.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.rightHand">
+            <summary>
+            (Deprecated) The right-hand <see cref="T:UnityEngine.XR.InputDevice"/> that contains
+            <see cref="T:UnityEngine.InputSystem.InputControl"/>s that surface data in the Meta Hand
+            Tracking Aim extension.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags">
+            <summary>
+            (Deprecated) Use <see cref="T:UnityEngine.XR.Hands.MetaAimFlags"/> instead.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.None">
+            <summary>
+            No flags are valid.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.Computed">
+            <summary>
+            Data for this hand has been computed.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.Valid">
+            <summary>
+            The aim pose is valid. Retrieve this data from
+            <see cref="P:UnityEngine.InputSystem.TrackedDevice.devicePosition"/> and
+            <see cref="P:UnityEngine.InputSystem.TrackedDevice.deviceRotation"/> that
+            <see cref="T:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand"/> inherits.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.IndexPinching">
+            <summary>
+            Indicates whether the index finger is pinching with the thumb.
+            Only valid when the pinch strength retrieved from
+            <see cref="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pinchStrengthIndex"/> is
+            at a full strength of <c>1.0</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.MiddlePinching">
+            <summary>
+            Indicates whether the middle finger is pinching with the thumb.
+            Only valid when the pinch strength retrieved from
+            <see cref="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pinchStrengthMiddle"/> is
+            at a full strength of <c>1.0</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.RingPinching">
+            <summary>
+            Indicates whether the ring finger is pinching with the thumb.
+            Only valid when the pinch strength retrieved from
+            <see cref="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pinchStrengthRing"/> is
+            at a full strength of <c>1.0</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.LittlePinching">
+            <summary>
+            Indicates whether the little finger is pinching with the thumb.
+            Only valid when the pinch strength retrieved from
+            <see cref="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pinchStrengthLittle"/> is
+            at a full strength of <c>1.0</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.SystemGesture">
+            <summary>
+            Indicates whether a system gesture is being performed (when the
+            palm of the hand is facing the headset).
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.DominantHand">
+            <summary>
+            Indicates whether the hand these flags were retrieved from is
+            the dominant hand.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.AimFlags.MenuPressed">
+            <summary>
+            Indicates whether the menu gesture button is pressed.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand">
+            <summary>
+            (Deprecated) A <see cref="T:UnityEngine.InputSystem.TrackedDevice"/> based off the data exposed in the <see href="https://registry.khronos.org/OpenXR/specs/1.0/html/xrspec.html#XR_FB_hand_tracking_aim">Meta Hand Tracking Aim extension</see>.
+            Use <see cref="T:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand"/> instead of <see cref="T:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand"/>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pressThreshold">
+            <summary>
+            The pinch amount required to register as being pressed for the
+            purposes of <see cref="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.indexPressed"/>, <see cref="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.middlePressed"/>,
+            <see cref="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.ringPressed"/>, and <see cref="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.littlePressed"/>.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.indexPressed">
+            <summary>
+            A [ButtonControl](xref:UnityEngine.InputSystem.Controls.ButtonControl)
+            that represents whether the pinch between the index finger and
+            the thumb is mostly pressed (greater than a threshold of <c>0.8</c>
+            contained in <see cref="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pressThreshold"/>).
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.middlePressed">
+            <summary>
+            A [ButtonControl](xref:UnityEngine.InputSystem.Controls.ButtonControl)
+            that represents whether the pinch between the middle finger and
+            the thumb is mostly pressed (greater than a threshold of <c>0.8</c>
+            contained in <see cref="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pressThreshold"/>).
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.ringPressed">
+            <summary>
+            A [ButtonControl](xref:UnityEngine.InputSystem.Controls.ButtonControl)
+            that represents whether the pinch between the ring finger and
+            the thumb is mostly pressed (greater than a threshold of <c>0.8</c>
+            contained in <see cref="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pressThreshold"/>).
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.littlePressed">
+            <summary>
+            A [ButtonControl](xref:UnityEngine.InputSystem.Controls.ButtonControl)
+            that represents whether the pinch between the little finger and
+            the thumb is mostly pressed (greater than a threshold of <c>0.8</c>
+            contained in <see cref="F:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pressThreshold"/>).
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.aimFlags">
+            <summary>
+            (Deprecated) Cast the result of reading this to <see cref="T:UnityEngine.XR.Hands.MetaAimFlags"/> to examine the value.
+            Use <see cref="T:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand"/> instead of <see cref="T:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand"/>.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pinchStrengthIndex">
+            <summary>
+            An [AxisControl](xref:UnityEngine.InputSystem.Controls.AxisControl)
+            that represents the pinch strength between the index finger and
+            the thumb.
+            </summary>
+            <remarks>
+            A value of <c>0</c> denotes no pinch at all, while a value of
+            <c>1</c> denotes a full pinch.
+            </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pinchStrengthMiddle">
+            <summary>
+            An [AxisControl](xref:UnityEngine.InputSystem.Controls.AxisControl)
+            that represents the pinch strength between the middle finger and
+            the thumb.
+            </summary>
+            <remarks>
+            A value of <c>0</c> denotes no pinch at all, while a value of
+            <c>1</c> denotes a full pinch.
+            </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pinchStrengthRing">
+            <summary>
+            An [AxisControl](xref:UnityEngine.InputSystem.Controls.AxisControl)
+            that represents the pinch strength between the ring finger and
+            the thumb.
+            </summary>
+            <remarks>
+            A value of <c>0</c> denotes no pinch at all, while a value of
+            <c>1</c> denotes a full pinch.
+            </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.pinchStrengthLittle">
+            <summary>
+            An [AxisControl](xref:UnityEngine.InputSystem.Controls.AxisControl)
+            that represents the pinch strength between the little finger and
+            the thumb.
+            </summary>
+            <remarks>
+            A value of <c>0</c> denotes no pinch at all, while a value of
+            <c>1</c> denotes a full pinch.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.MetaHandTrackingAim.MetaAimHand.FinishSetup">
+            <summary>
+            Perform final initialization tasks after the control hierarchy has been put into place.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.OpenXR.OpenXRHandProvider">
+            <summary>
+            Hand tracking provider for the OpenXR platform.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.OpenXRHandProvider.Start">
+            <summary>
+            See <see cref="M:UnityEngine.SubsystemsImplementation.SubsystemProvider`1.Start"/>.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.OpenXRHandProvider.Stop">
+            <summary>
+            See <see cref="M:UnityEngine.SubsystemsImplementation.SubsystemProvider`1.Stop"/>.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.OpenXRHandProvider.Destroy">
+            <summary>
+            See <see cref="M:UnityEngine.SubsystemsImplementation.SubsystemProvider`1.Destroy"/>.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.OpenXRHandProvider.GetHandLayout(Unity.Collections.NativeArray{System.Boolean})">
+            <inheritdoc/>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.OpenXR.OpenXRHandProvider.TryUpdateHands(UnityEngine.XR.Hands.XRHandSubsystem.UpdateType,UnityEngine.Pose@,Unity.Collections.NativeArray{UnityEngine.XR.Hands.XRHandJoint},UnityEngine.Pose@,Unity.Collections.NativeArray{UnityEngine.XR.Hands.XRHandJoint})">
+            <inheritdoc/>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHand">
+            <summary>
+            Represents a hand from an <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>. Do not create
+            this yourself - get hand objects from the <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.leftHand"/>
+            and <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.rightHand"/> properties of the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            </summary>
+            <remarks>
+            See [Hand tracking](xref:xrhands-tracking-data) for a description of the hand data model
+            and how to access the tracking data.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHand.GetJoint(UnityEngine.XR.Hands.XRHandJointID)">
+            <summary>
+            Retrieves an <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/> by its ID.
+            </summary>
+            <remarks>
+            The joint data is stored in an internal native array that isn't copied if you
+            make a shallow copy of an <c>XRHand</c> object. This native array is modified each time
+            A hand update occurs. Calling this function from a
+            copied <c>XRHand</c> retrieves the latest hand data, not the data from when the
+            hand object was copied. To take a snapshot of the joint data for use later, you must
+            copy each individual <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/> object.
+            </remarks>
+            <param name="id">ID of the required joint.</param>
+            <returns>The <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/> corresponding the ID passed in.</returns>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHand.rootPose">
+            <summary>
+            Root pose for the hand.
+            </summary>
+            <value>Located at the wrist joint, the forward vector of the hand points in the direction
+            of the fingers.</value>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHand.handedness">
+            <summary>
+            Represents which hand this is.
+            </summary>
+            <value>Right, left, or invalid.</value>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHand.isTracked">
+            <summary>
+            Whether the subsystem is currently tracking this hand's root pose and joints.
+            </summary>
+            <value>Indicates the tracking status as of the last hand data update.</value>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHand.ToString">
+            <summary>
+            Returns a string representation of the XRHand.
+            </summary>
+            <returns>
+            String representation of the value.
+            </returns>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandDevice">
+             <summary>
+             An <see cref="T:UnityEngine.XR.InputDevice"/> that surfaces common controller data
+             populated by hand joint poses. Devices will only be created if
+             hand-tracking is enabled in the build settings for the target platform.
+             </summary>
+             <remarks>
+             The <see cref="P:UnityEngine.InputSystem.TrackedDevice.devicePosition"/> and
+             <see cref="P:UnityEngine.InputSystem.TrackedDevice.deviceRotation"/> inherited from <see cref="T:UnityEngine.InputSystem.TrackedDevice"/>
+             represent the wrist pose.
+            
+             Use the [XROrigin](xref:Unity.XR.CoreUtils.XROrigin) in the scene to position and orient the device
+             and gesture poses properly. If you are using this data to set the Transform of a GameObject in
+             the scene hierarchy, you can set the local position and rotation of the Transform and make
+             it a child of the <c>CameraOffset</c> object below the <c>XROrigin</c>. Otherwise, you can use the
+             Transform of the <c>CameraOffset</c> to transform the data into world space.
+             </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandDevice.leftHand">
+            <summary>
+            The left-hand <see cref="T:UnityEngine.XR.InputDevice"/> that contains
+            <see cref="T:UnityEngine.InputSystem.InputControl"/>s that surface common controller data
+            populated by hand joint poses.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandDevice.rightHand">
+            <summary>
+            The right-hand <see cref="T:UnityEngine.XR.InputDevice"/> that contains
+            <see cref="T:UnityEngine.InputSystem.InputControl"/>s that surface common controller data
+            populated by hand joint poses.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandDevice.gripPosition">
+            <summary>
+            Position of the grip pose, representing the palm.
+            When transformed relative to the [XROrigin](xref:Unity.XR.CoreUtils.XROrigin),
+            the position will be in the correct position in the scene relative to the user.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandDevice.gripRotation">
+            <summary>
+            Rotation of the grip pose, representing the palm.
+            When transformed relative to the [XROrigin](xref:Unity.XR.CoreUtils.XROrigin),
+            the rotation will be in the correct orientation in the scene relative to the user.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandDevice.pokePosition">
+            <summary>
+            Position of the poke pose, representing the index finger's tip. 
+            When transformed relative to the [XROrigin](xref:Unity.XR.CoreUtils.XROrigin),
+            the position will be in the correct position in the scene relative to the user.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandDevice.pokeRotation">
+            <summary>
+            Rotation of the poke pose, representing the index finger's tip.
+            When transformed relative to the [XROrigin](xref:Unity.XR.CoreUtils.XROrigin),
+            the rotation will be in the correct orientation in the scene relative to the user.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandDevice.pinchPosition">
+            <summary>
+            Position of the pinch pose, representing the thumb's tip.
+            When transformed relative to the [XROrigin](xref:Unity.XR.CoreUtils.XROrigin),
+            the position will be in the correct position in the scene relative to the user.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandDevice.pinchRotation">
+            <summary>
+            Rotation of the pinch pose, representing the thumb's tip.
+            When transformed relative to the [XROrigin](xref:Unity.XR.CoreUtils.XROrigin),
+            the rotation will be in the correct orientation in the scene relative to the user.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandDevice.FinishSetup">
+            <summary>
+            Perform final initialization tasks after the control hierarchy has been put into place.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandJoint">
+             <summary>
+             Represents a joint of an <see cref="T:UnityEngine.XR.Hands.XRHand"/>.
+             </summary>
+             <remarks>
+             The term "joint" should be taken loosely in this context. In addition to the
+             anatomical finger joints, the list of joints includes the fingertips, a point on the palm
+             and a point on the wrist. See <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> for the full list of
+             joints.
+            
+             Refer to [Hand data model](xref:xrhands-data-model) for a description of the joint locations
+             and the data they contain.
+             </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandJoint.id">
+            <summary>
+            The ID of this joint.
+            </summary>
+            <value>The joint ID.</value>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandJoint.handedness">
+            <summary>
+            Denotes which hand this joint is on.
+            </summary>
+            <value>Right or left.</value>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandJoint.trackingState">
+            <summary>
+            Represents which tracking data is valid.
+            </summary>
+            <value>A flag is set for each valid type of data. If the
+            The <see cref="F:UnityEngine.XR.Hands.XRHandJointTrackingState.WillNeverBeValid"/> flag is set
+            when this joind ID isn't supported by the hand data provider.</value>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJoint.TryGetRadius(System.Single@)">
+            <summary>
+            Retrieves the joint's radius, if available.
+            </summary>
+            <param name="radius">
+            Assigned the tracked radius of this joint, if successful.
+            Set to zero, if unsuccessful.
+            </param>
+            <returns>
+            Returns <see langword="true"/> if successful and the radius was
+            filled out with valid tracking data, returns <see langword="false"/>
+            otherwise.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJoint.TryGetPose(UnityEngine.Pose@)">
+            <summary>
+            Retrieves the joint's pose, if available.
+            </summary>
+            <param name="pose">
+            Assigned the tracked pose of this joint, if successful.
+            Set to <see cref="P:UnityEngine.Pose.identity"/>, if unsuccessful.
+            </param>
+            <returns>
+            Returns <see langword="true"/> if successful and the joint pose was
+            filled out with valid tracking data, returns <see langword="false"/>
+            otherwise.
+            </returns>
+            <remarks>
+            Joint poses are relative to the real-world point chosen by the user's device.
+            
+            To transform to world space so that the joint appears in the correct location
+            relative to the user, transform the pose based on the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin).
+            </remarks>
+            <example>
+            The following example illustrates how to transform a pose into world space using the
+            transform from the XROrigin object in a scene.
+            <code>
+            public Pose ToWorldPose(XRHandJoint joint, Transform origin)
+            {
+                Pose xrOriginPose = new Pose(origin.position, origin.rotation);
+                if (joint.TryGetPose(out Pose jointPose))
+                {
+                    return jointPose.GetTransformedBy(xrOriginPose);
+                }
+                else
+                    return Pose.identity;
+                }
+            </code>
+            </example>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJoint.TryGetLinearVelocity(UnityEngine.Vector3@)">
+            <summary>
+            Retrieves the joint's linear velocity vector, if available.
+            </summary>
+            <param name="linearVelocity">
+            Assigned the tracked linear velocity of this joint, if successful.
+            Set to <see cref="P:UnityEngine.Vector3.zero"/>, if unsuccessful.
+            </param>
+            <returns>
+            Returns <see langword="true"/> if successful and the velocity was
+            filled out with valid tracking data, returns <see langword="false"/>
+            otherwise.
+            </returns>
+            <remarks>
+            To transform to world space so that the vector has the correct direction
+            relative to the user, rotate this by the rotation of the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin).
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJoint.TryGetAngularVelocity(UnityEngine.Vector3@)">
+            <summary>
+            Retrieves the joint's angular velocity vector, if available
+            </summary>
+            <param name="angularVelocity">
+            Assigned the tracked angular velocity of this joint, if successful.
+            Set to <see cref="P:UnityEngine.Vector3.zero"/>, if unsuccessful.
+            </param>
+            <returns>
+            Returns <see langword="true"/> if successful and the angular
+            velocity filled out with valid tracking data, returns
+            <see langword="false"/> otherwise.
+            </returns>
+            <remarks>
+            To transform to world space so that the vector has the correct direction
+            relative to the user, rotate this by the rotation of the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin).
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandJoint.ToString">
+            <summary>
+            Returns a string representation of the XRHandJoint.
+            </summary>
+            <returns>
+            String representation of the value.
+            </returns>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility">
+            <summary>
+            Utility methods for a provider to a <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility.CreateJoint(UnityEngine.XR.Hands.Handedness,UnityEngine.XR.Hands.XRHandJointTrackingState,UnityEngine.XR.Hands.XRHandJointID,UnityEngine.Pose,System.Single,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Create a fully configurable joint with at least a pose in hand
+            space, tracking state, and ID.
+            </summary>
+            <param name="handedness">
+            Denotes whether the joint being created is on the left or right hand.
+            </param>
+            <param name="trackingState">
+            The tracking state flags associated with this joint, representing
+            which fields of the <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/> are valid.
+            </param>
+            <param name="id">
+            The <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> of the joint. When filling out an
+            element of an array of <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/>, the index must
+            be converted with <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.FromIndex(System.Int32)"/>.
+            </param>
+            <param name="pose">
+            The pose of the joint in session space, relative to the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin).
+            </param>
+            <param name="radius">
+            The radius of the joint. The default value is <c>0f</c>.
+            </param>
+            <param name="linearVelocity">
+            The linear velocity of the joint in hand space (relative to the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin)). The default value is
+            <c>Vector3.zero</c>.
+            </param>
+            <param name="angularVelocity">
+            The angular velocity of the joint in hand space (relative to the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin)). The default value is
+            <c>Vector3.zero</c>.
+            </param>
+            <returns>
+            An <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/> with the given pose and other supplied
+            data.
+            </returns>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility.SubsystemUpdater">
+            <summary>
+            Use this with your provider (if hand-tracking is enabled in your
+            build settings) to have the subsystem automatically update. Users
+            can subscribe to <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.handsUpdated"/> to
+            respond to updates instead of waiting until a following update step.
+            Makes use of <c>UnityEngine.LowLevel.PlayerLoop</c> to insert this
+            automatic update at the beginning of the <c>EarlyUpdate.XRUpdate</c>
+            loop.
+            </summary>
+            <remarks>
+            If the Input System backend is enabled, this will also create and
+            <see cref="T:UnityEngine.XR.Hands.XRHandDevice"/>s which update themselves from the
+            <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.handsUpdated"/> callback.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility.SubsystemUpdater.#ctor(UnityEngine.XR.Hands.XRHandSubsystem)">
+            <summary>
+            Initializes and returns an instance of <see cref="T:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility.SubsystemUpdater"/>.
+            You should create this in your plug-in once the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>
+            is created.
+            </summary>
+            <param name="subsystem">
+            The <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/> to update automatically.
+            </param>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility.SubsystemUpdater.Start">
+            <summary>
+            Starts the automatic updating of the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            You should call this from your plug-in when calling <c>Start</c>
+            on the subsystem.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility.SubsystemUpdater.Stop">
+            <summary>
+            Stops the automatic updating of the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            You should call this from your plug-in when calling <c>Stop</c>
+            on the subsystem.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility.SubsystemUpdater.Destroy">
+            <summary>
+            Destroys the automatic updating of the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            You should call this from your plug-in when calling <c>Destroy</c>
+            on the subsystem.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.ProviderImplementation.XRHandProviderUtility.CreateJoint(UnityEngine.XR.Hands.XRHandJointTrackingState,UnityEngine.XR.Hands.XRHandJointID,UnityEngine.Pose,System.Single,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Create a fully configurable joint with at least a pose in hand
+            space, tracking state, and ID.
+            </summary>
+            <param name="trackingState">
+            The tracking state flags associated with this joint, representing
+            which fields of the <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/> are valid.
+            </param>
+            <param name="id">
+            The <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> of the joint. When filling out an
+            element of an array of <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/>, the index must
+            be converted with <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.FromIndex(System.Int32)"/>.
+            </param>
+            <param name="pose">
+            The pose of the joint in session space, relative to the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin).
+            </param>
+            <param name="radius">
+            The radius of the joint. The default value is <c>0f</c>.
+            </param>
+            <param name="linearVelocity">
+            The linear velocity of the joint in hand space (relative to the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin)). The default value is
+            <c>Vector3.zero</c>.
+            </param>
+            <param name="angularVelocity">
+            The angular velocity of the joint in hand space (relative to the
+            [XROrigin](xref:Unity.XR.CoreUtils.XROrigin)). The default value is
+            <c>Vector3.zero</c>.
+            </param>
+            <returns>
+            An <see cref="T:UnityEngine.XR.Hands.XRHandJoint"/> with the given pose and other supplied
+            data.
+            </returns>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.ProviderImplementation.XRHandSubsystemProvider">
+            <summary>
+            Methods to implement by the implementing provider for an <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.ProviderImplementation.XRHandSubsystemProvider.GetHandLayout(Unity.Collections.NativeArray{System.Boolean})">
+            <summary>
+            Gets the layout of hand joints for this provider, by having the
+            provider mark each index corresponding to a <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/>
+            get marked as <see langword="true"/> if the provider attempts to track
+            that joint.
+            </summary>
+            <remarks>
+            Called once on creation so that before the subsystem is even started,
+            so the user can immediately create a valid hierarchical structure as
+            soon as they get a reference to the subsystem without even needing to
+            start it.
+            </remarks>
+            <param name="handJointsInLayout">
+            Each index corresponds to a <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/>. For each
+            joint that the provider will attempt to track, mark that spot as
+            <see langword="true"/> by calling <c>.ToIndex()</c> on that ID.
+            </param>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.ProviderImplementation.XRHandSubsystemProvider.TryUpdateHands(UnityEngine.XR.Hands.XRHandSubsystem.UpdateType,UnityEngine.Pose@,Unity.Collections.NativeArray{UnityEngine.XR.Hands.XRHandJoint},UnityEngine.Pose@,Unity.Collections.NativeArray{UnityEngine.XR.Hands.XRHandJoint})">
+            <summary>
+            Attempts to retrieve current hand-tracking data from the provider.
+            </summary>
+            <param name="updateType">
+            Informs the provider which kind of timing the update is being
+            requested under.
+            </param>
+            <param name="leftHandRootPose">
+            Update this and include <c>XRHandSubsystem.UpdateSuccesFlags.LeftHandRootPose</c>
+            in the return value to update the left hand's root pose.
+            </param>
+            <param name="leftHandJoints">
+            Array of hand joints to fill out for the left hand. These are
+            initialized with a copy of the current joint data for the left hand,
+            so if the last known tracking data for a particular joint is still
+            fine, you don't need to fill out that data again. If you update
+            these, include <c>XRHandSubsystem.UpdateSuccesFlags.LeftHandJoints</c>
+            in the return value to have the changes reflected in the subsystem.
+            </param>
+            <param name="rightHandRootPose">
+            Update this and include <c>XRHandSubsystem.UpdateSuccesFlags.RightHandRootPose</c>
+            in the return value to update the right hand's root pose.
+            </param>
+            <param name="rightHandJoints">
+            Array of hand joints to fill out for the right hand. These are
+            initialized with a copy of the current joint data for the right hand,
+            so if the last known tracking data for a particular joint is still
+            fine, you don't need to fill out that data again. If you update
+            these, include <c>XRHandSubsystem.UpdateSuccesFlags.RightHandJoints</c>
+            in the return value to have the changes reflected in the subsystem.
+            </param>
+            <returns>
+            Returns <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags"/> to describe which tracking
+            data was successfully updated.
+            </returns>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandSubsystem">
+             <summary>
+             A subsystem for detecting and tracking hands and their corresponding
+             joint pose data.
+             </summary>
+             <remarks>
+             The <c>XRHandSystem</c> class is the main entry point for accessing hand tracking data
+             provided by an XR device. A provider implementation that reads tracking data from the
+             user's device and provides updates to this subsystem must also be available. The XR
+             Hands package includes a provider implementation for OpenXR.
+            
+             Get an instance for this <c>XRHandSubsystem</c> from the active XR
+             loader, as described in [Get the XRHandSubsystem instance](xref:xrhands-access-data#get-instance).
+             
+             For lowest latency, read the tracking data available from the <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.leftHand"/>
+             and <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.rightHand"/> properties in a delegate function assigned to the
+             <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/> callback. This callback is invoked twice per frame, once near
+             the <c>MonoBehaviour.Update</c> event and once near the <see cref="E:UnityEngine.Application.onBeforeRender"/>
+             event. The <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.BeforeRender"/> update provides the lowest latency between
+             hand motion and rendering, but occurs too late to affect physics. In addition, trying to
+             perform too much work during the <c>BeforeRender</c> callback can negatively impact framerate.
+             For best results, update game logic affected by hand tracking in a
+             <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.Dynamic"/> update and perform a final update of hand visuals in a
+             <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.BeforeRender"/> update.
+            
+             Refer to [Hand tracking data](xref:xrhands-tracking-data) for more information.
+             </remarks>
+            <summary>
+            A subystem for detecting and tracking hands and their corresponding
+            joint pose data.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystem.#ctor">
+             <summary>
+             Constructs a subsystem. Do not invoke directly.
+             </summary>
+             <remarks>
+             Do not call this constructor if you are an application developer consuming hand tracking data.
+             Instead, get an instance for this <c>XRHandTrackingSubsystem</c> from the active XR
+             loader, as described in [Get the XRHandSubsystem instance](xref:xrhands-access-data#get-instance).
+            
+             If you are implementing an XR hand data provider, call <c>Create</c>
+             on the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystemDescriptor"/> or call
+             <see cref="M:UnityEngine.XR.Management.XRLoaderHelper.CreateSubsystem``2(System.Collections.Generic.List{``0},System.String)"/>
+             instead of invoking this constructor.
+             </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandSubsystem.leftHand">
+             <summary>
+             Gets the left <see cref="T:UnityEngine.XR.Hands.XRHand"/> that is being tracked by this
+             subsystem.
+             </summary>
+             <remarks>
+             Check the <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.updateSuccessFlags"/> property to determine what data
+             associated with this hand was successfully updated in the last update, if any.
+             The <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.updateSuccessFlags"/> value is also passed to the callback
+             function assigned to <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/>.
+            
+             Refer to [Hand data model](xref:xrhands-data-model) for a description of the
+             available hand tracking data.
+             </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandSubsystem.rightHand">
+             <summary>
+             Gets the right <see cref="T:UnityEngine.XR.Hands.XRHand"/> that is being tracked by this
+             subsystem.
+             </summary>
+             <remarks>
+             Check the <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.updateSuccessFlags"/> property to determine what data
+             associated with this hand was successfully updated in the last update, if any.
+             The <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.updateSuccessFlags"/> value is also passed to the callback
+             function assigned to <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/>.
+            
+             Refer to [Hand data model](xref:xrhands-data-model) for a description of the
+             available hand tracking data.
+             </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandSubsystem.jointsInLayout">
+             <summary>
+             Indicates which joints in the <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> list are
+             supported by the current hand data provider.
+             </summary>
+             <remarks>
+             Hand data providers might not support tracking every joint in the
+             <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> list. This array contains an element for
+             each possible joint. A value of true indicates the the current provider
+             supports tracking the associated joint.
+             
+             To get the correct array index for a joint, call
+             <see cref="M:UnityEngine.XR.Hands.XRHandJointIDUtility.ToIndex(UnityEngine.XR.Hands.XRHandJointID)"/> on the
+             <see cref="T:UnityEngine.XR.Hands.XRHandJointID"/> in question.
+            
+             Refer to [Get supported joints array](xref:xrhands-access-data#joint-layout)
+             for additional information.
+             
+             This array will already be valid as soon as you have a reference to
+             a subsystem (in other words, it's filled out before the subsystem is
+             returned by a call to <c>XRHandSubsystemDescriptor.Create</c>).
+             </remarks>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandSubsystem.updateSuccessFlags">
+            <summary>
+            Describes what data on either hand was updated during the most recent hand update.
+            </summary>
+            <remarks>
+            This property updated every time the hand data is updated, which only occurs while this
+            XRHandSubsystem is running.
+            
+            The <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.updateSuccessFlags"/> value is also passed to the callback
+            function assigned to <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/>.
+            </remarks>
+            <value>The flags for the most recent update. Applies to the <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.leftHand"/>
+            and <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.rightHand"/> properties.</value>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags">
+            <summary>
+            Describes what data on either hand was updated during the call.
+            </summary>
+            <seealso cref="P:UnityEngine.XR.Hands.XRHandSubsystem.updateSuccessFlags"/>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags.None">
+            <summary>
+            No data was successfully updated for either hand.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags.LeftHandRootPose">
+            <summary>
+            The root pose of <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.leftHand"/> was updated.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags.LeftHandJoints">
+            <summary>
+            The joints in <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.leftHand"/> were updated.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags.RightHandRootPose">
+            <summary>
+            The root pose of <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.rightHand"/> was updated.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags.RightHandJoints">
+            <summary>
+            The joints in <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.rightHand"/> were updated.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags.All">
+            <summary>
+            All possible valid data retrieved (hand root poses, and joints for both hands).
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType">
+            <summary>
+            The timing of a hand update during a frame.
+            </summary>
+            <seealso cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/>
+            <seealso cref="M:UnityEngine.XR.Hands.XRHandSubsystem.TryUpdateHands(UnityEngine.XR.Hands.XRHandSubsystem.UpdateType)"/>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.Dynamic">
+            <summary>
+            Corresponds to timing similar or close to <c>MonoBehaviour.Update</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.BeforeRender">
+            <summary>
+            Corresponds to timing similar or close to <see cref="E:UnityEngine.Application.onBeforeRender"/>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands">
+             <summary>
+             A callback invoked for each hand update.
+             </summary>
+             <remarks>
+             This callback is invoked twice per frame, once near
+             the <c>MonoBehaviour.Update</c> event and once near the <see cref="E:UnityEngine.Application.onBeforeRender"/>
+             event. The <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.BeforeRender"/> update provides the lowest latency between
+             hand motion and rendering, but occurs too late to affect physics. In addition, trying to
+             perform too much work during the <c>BeforeRender</c> callback can negatively impact framerate.
+             For best results, update game logic affected by hand tracking in a
+             <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.Dynamic"/> update and update hand visuals in a
+             <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.BeforeRender"/> update.
+            
+             The delegate assigned to this property must take three parameters, which have the
+             following types and assigned values when the callback is invoked:
+            
+             * <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>: contains a reference to this subsystem.
+             * <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags"/>: the flags indicating which data could be updated.
+             * <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType"/>: the update timing.
+             </remarks>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.trackingAcquired">
+             <summary>
+             A callback invoked when the subsystem begins tracking a hand's root pose and joints.
+             </summary>
+             <remarks>
+             This is called before <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/>.
+            
+             The delegate assigned to this property must take one parameter of type
+             <see cref="T:UnityEngine.XR.Hands.XRHand"/>, which is assigned a reference to the hand whose tracking was acquired.
+             </remarks>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.trackingLost">
+            <summary>
+            A callback invoked when the subsystem stops tracking a hand's root pose and joints.
+            </summary>
+            <remarks>
+            This is called before <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/>.
+            
+            The delegate assigned to this property must take one parameter of type
+            <see cref="T:UnityEngine.XR.Hands.XRHand"/>, which is assigned a reference to the hand whose tracking was lost.
+            </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystem.TryUpdateHands(UnityEngine.XR.Hands.XRHandSubsystem.UpdateType)">
+             <summary>
+             Request an update from the hand data provider. Application developers
+             consuming hand tracking data should not call this function. 
+             </summary>
+             <param name="updateType">
+             Informs the provider which kind of timing the update is being
+             requested under.
+             </param>
+             <returns>
+             Returns <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem.UpdateSuccessFlags"/> to describe what data was updated successfully.
+             </returns>
+             <remarks>
+             This function must be called by the subsystem implementation to request an update from
+             the hand data provider.
+            
+             When an update is complete, the updated data is available from the <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.leftHand"/> and
+             <see cref="P:UnityEngine.XR.Hands.XRHandSubsystem.rightHand"/> properties. The <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/> callback is invoked.
+            
+             The update is performed immediately. If you request an update timing that occurs in the
+             future, for example, requesting <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.UpdateType.BeforeRender"/> from a
+             <c>MonoBehaviour.Update</c> function, then the provider predicts what the hand data
+             will be at the requested time.
+             
+             If overriding this method in a derived type, it is expected that you
+             call <c>base.TryUpdateHands(updateType)</c> and return what it
+             returns.
+             </remarks>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystem.OnCreate">
+            <summary>
+            Called by Unity before the subsystem is returned from a call to <c>XRHandSubsystemDescriptor.Create</c>.
+            </summary>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystem.OnDestroy">
+            <summary>
+            Called by Unity before the subsystem is fully destroyed during a call to <c>XRHandSubsystem.Destroy</c>.
+            </summary>
+        </member>
+        <member name="F:UnityEngine.XR.Hands.XRHandSubsystem.handsUpdated">
+            <summary>
+            Obsolete. Use <see cref="F:UnityEngine.XR.Hands.XRHandSubsystem.updatedHands"/> instead.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandSubsystemDescriptor">
+            <summary>
+            Describes the capabilities of an <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>.
+            </summary>
+        </member>
+        <member name="T:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo">
+            <summary>
+            Construction information for the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystemDescriptor"/>.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.id">
+            <summary>
+            A string identifier used to name the subsystem provider.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.providerType">
+            <summary>
+            Specifies the provider implementation type to use for instantiation.
+            </summary>
+        </member>
+        <member name="P:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.subsystemTypeOverride">
+            <summary>
+            Specifies the <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/>-derived type that
+            forwards casted calls to its provider.
+            </summary>
+            <value>
+            The type of the subsystem to use for instantiation. If null,
+            <see cref="T:UnityEngine.XR.Hands.XRHandSubsystem"/> will be instantiated.
+            </value>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.GetHashCode">
+            <summary>
+            Generates a hash suitable for use with containers like <c>HashSet</c> and <c>Dictionary</c>.
+            </summary>
+            <returns>A hash code generated from this object's fields.</returns>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.Equals(UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo)">
+            <summary>
+            Tests for equality.
+            </summary>
+            <param name="other">The other <see cref="T:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo"/> to compare against.</param>
+            <returns>
+            Returns <see langword="true"/> if every field in <paramref name="other"/>
+            is equal to this <see cref="T:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo"/>, otherwise returns <see langword="true"/>.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.Equals(System.Object)">
+            <summary>
+            Tests for equality.
+            </summary>
+            <param name="obj">The `object` to compare against.</param>
+            <returns>
+            Returns <see langword="true"/> if <paramref name="obj"/> is of
+            type <see cref="T:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo"/> and <see cref="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.Equals(UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo)"/> also
+            returns <see langword="true"/>; otherwise returns <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.op_Equality(UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo,UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo)">
+            <summary>
+            Tests for equality. Same as <see cref="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.Equals(UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo)"/>.
+            </summary>
+            <param name="lhs">The left-hand side of the comparison.</param>
+            <param name="rhs">The right-hand side of the comparison.</param>
+            <returns>
+            Returns <see langword="true"/> if <paramref name="lhs"/> is equal
+            to <paramref name="rhs"/>, otherwise returns <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.op_Inequality(UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo,UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo)">
+            <summary>
+            Tests for inequality. Same as `!`<see cref="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo.Equals(UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo)"/>.
+            </summary>
+            <param name="lhs">The left-hand side of the comparison.</param>
+            <param name="rhs">The right-hand side of the comparison.</param>
+            <returns>Returns <see langword="true"/> if <paramref name="lhs"/>
+            is not equal to <paramref name="rhs"/>, otherwise returns
+            <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Register(UnityEngine.XR.Hands.XRHandSubsystemDescriptor.Cinfo)">
+            <summary>
+            Registers a new descriptor with the <c>SubsystemManager</c>.
+            </summary>
+            <param name="cinfo">The construction information for the new descriptor.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,8 @@
+{
+  "settings": {
+    "documentationRules": {
+      "companyName": "nicoco007",
+      "copyrightText": "This file is part of OpenXRTrackerProfiles.\n\nOpenXRTrackerProfiles is free software: you can redistribute it and/or modify it under the terms\nof the GNU General Public License as published by the Free Software Foundation,\neither version 3 of the License, or (at your option) any later version.\n\nOpenXRTrackerProfiles is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;\nwithout even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along with OpenXRTrackerProfiles.\nIf not, see https://www.gnu.org/licenses/."
+    }
+  }
+}

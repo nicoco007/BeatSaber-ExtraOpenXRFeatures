@@ -1,0 +1,43 @@
+<Project>
+  <!-- Display a warning if BeatSaberModdingTools.Tasks is not installed. -->
+  <Target Name="CheckBSMTInstalled" AfterTargets="BeforeBuild" Condition="'$(BSMTTaskAssembly)' == ''">
+    <Warning Text="The BeatSaberModdingTools.Tasks NuGet package isn't installed. Advanced build targets will not work." />
+  </Target>
+
+  <!-- Set the assembly version based on the manifest -->
+  <Target Name="SetAssemblyVersion" AfterTargets="CheckBSMTInstalled">
+    <GetManifestInfo>
+      <Output TaskParameter="PluginVersion" PropertyName="PluginVersion" />
+      <Output TaskParameter="BasePluginVersion" PropertyName="BasePluginVersion" />
+    </GetManifestInfo>
+
+    <PropertyGroup>
+      <Version>$(BasePluginVersion)</Version>
+    </PropertyGroup>
+  </Target>
+  
+  <!-- Copy the assembly and PDB to the Beat Saber folder. -->
+  <Target Name="CopyToPlugins" AfterTargets="Build" Condition="'$(ContinuousIntegrationBuild)' != 'True'">
+    <PropertyGroup>
+      <PluginsDir>$(BeatSaberDir)\Plugins</PluginsDir>
+    </PropertyGroup>
+
+    <Message Text="$(TargetName).dll -> $(PluginsDir)" Importance="high" />
+
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(PluginsDir)" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).xml" DestinationFolder="$(PluginsDir)" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(PluginsDir)" Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
+  </Target>
+
+  <!-- Organize files for zipping -->
+  <Target Name="CopyToPublish" AfterTargets="Publish">
+    <RemoveDir Directories="$(PublishDir)" />
+
+    <Message Text="$(TargetName).dll -> $(PublishDir)" Importance="high" />
+
+    <MakeDir Directories="$(PublishDir)Plugins" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(PublishDir)Plugins" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).xml" DestinationFolder="$(PublishDir)Plugins" />
+    <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(PublishDir)Plugins" Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
+  </Target>
+</Project>
