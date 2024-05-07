@@ -16,8 +16,6 @@
 using HarmonyLib;
 using IPA;
 using IPA.Logging;
-using OpenXRFeatureManager.Patches;
-using UnityEngine.SceneManagement;
 
 namespace OpenXRFeatureManager;
 
@@ -29,13 +27,16 @@ public class Plugin
     [Init]
     public Plugin(Logger logger)
     {
+        log = logger;
+
         FeatureManager.instance = new FeatureManager(logger.GetChildLogger(nameof(FeatureManager)));
     }
+
+    internal static Logger log { get; private set; } = null!;
 
     [OnStart]
     public void OnEnable()
     {
-        SceneContext_Awake.sceneEarlyLoad += OnSceneEarlyLoad;
         _harmony.PatchAll();
     }
 
@@ -43,11 +44,5 @@ public class Plugin
     public void OnDisable()
     {
         _harmony.UnpatchSelf();
-        SceneContext_Awake.sceneEarlyLoad -= OnSceneEarlyLoad;
-    }
-
-    private void OnSceneEarlyLoad(Scene scene)
-    {
-        FeatureManager.instance.AddFeaturesAndRestartOpenXR();
     }
 }

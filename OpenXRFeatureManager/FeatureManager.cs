@@ -15,6 +15,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.XR.Management;
 using UnityEngine.XR.OpenXR;
@@ -30,8 +31,6 @@ namespace OpenXRFeatureManager
     {
         private readonly Logger _logger;
         private readonly List<OpenXRFeature> _registeredFeatures = new();
-
-        private bool _initialized;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureManager"/> class.
@@ -56,6 +55,11 @@ namespace OpenXRFeatureManager
         /// Gets the current instance of <see cref="FeatureManager"/>.
         /// </summary>
         public static FeatureManager instance { get; internal set; } = null!;
+
+        /// <summary>
+        /// Gets a value indicating whether or not this instance of <see cref="FeatureManager"/> has been initialized.
+        /// </summary>
+        internal bool initialized { get; private set; }
 
         /// <summary>
         /// Instantiates and configures an <see cref="OpenXRFeature"/> of type <typeparamref name="T"/>.
@@ -99,7 +103,7 @@ namespace OpenXRFeatureManager
         /// <param name="openXRFeature">The <see cref="OpenXRFeature"/> to register.</param>
         public void RegisterFeature(OpenXRFeature openXRFeature)
         {
-            if (_initialized)
+            if (initialized)
             {
                 throw new InvalidOperationException("Tried registering an OpenXR feature too late! Features should be registered in a mod's [OnStart] or [OnEnable] method.");
             }
@@ -117,10 +121,18 @@ namespace OpenXRFeatureManager
         /// <summary>
         /// Adds the features defined by <see cref="_registeredFeatures"/> to <see cref="OpenXRSettings.features"/> and restarts the OpenXR loader.
         /// </summary>
-        internal void AddFeaturesAndRestartOpenXR()
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        internal async Task AddFeaturesAndRestartOpenXRAsync()
         {
-            if (_initialized)
+            if (initialized)
             {
+                throw new InvalidOperationException("Already initialized");
+            }
+
+            if (_registeredFeatures.Count == 0)
+            {
+                _logger.Trace("No features registered; nothing to do");
+                initialized = true;
                 return;
             }
 
@@ -148,6 +160,10 @@ namespace OpenXRFeatureManager
 
             OpenXRSettings.Instance.features = allFeatures;
 
+            // Important: this prevents HMD data through XR Input going missing when the game window
+            // loses focus if the window isn't focused while starting up (potentially among other things).
+            await Task.Yield();
+
             beforeOpenXRReloaded?.Invoke();
 
             if (openXRWasLoaded)
@@ -157,7 +173,7 @@ namespace OpenXRFeatureManager
                 manager.StartSubsystems();
             }
 
-            _initialized = true;
+            initialized = true;
         }
     }
 }

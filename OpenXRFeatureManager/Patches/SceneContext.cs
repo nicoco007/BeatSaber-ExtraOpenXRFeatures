@@ -14,8 +14,8 @@
 // </copyright>
 
 using System;
+using System.Threading.Tasks;
 using HarmonyLib;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace OpenXRFeatureManager.Patches;
@@ -24,19 +24,37 @@ namespace OpenXRFeatureManager.Patches;
 /// Patch targeting <see cref="SceneContext.Awake"/> so code can be run before basically anything else in a loaded scene.
 /// </summary>
 /// <remarks>
-/// We need to run the XR restart logic after the splash screen scene unloads but before anything else.
-/// Awake will run before before OnSceneLoaded gets invoked so we can make changes before the first SceneContext initializes.
+/// We need to run the OpenXR restart logic after the splash screen scene but before anything else.
+/// Awake will run before before OnSceneLoaded gets invoked so we can make changes before the first SceneContext (PCInit) initializes.
 /// </remarks>
 [HarmonyPatch(typeof(SceneContext), nameof(SceneContext.Awake))]
 internal class SceneContext_Awake
 {
-    /// <summary>
-    /// Invoked before a <see cref="SceneContext"/>'s Awake function runs.
-    /// </summary>
-    internal static event Action<Scene>? sceneEarlyLoad;
-
-    private static void Prefix(SceneContext __instance)
+    [HarmonyPriority(Priority.Last)]
+    private static bool Prefix(SceneContext __instance)
     {
-        sceneEarlyLoad?.Invoke(__instance.gameObject.scene);
+        if (FeatureManager.instance.initialized)
+        {
+            return true;
+        }
+
+        FeatureManager.instance.AddFeaturesAndRestartOpenXRAsync().ContinueWith(
+            (task) =>
+            {
+                if (task.Exception != null)
+                {
+                    Plugin.log.Error($"Failed to set up OpenXR features\n{task.Exception}");
+                }
+
+                Awake(__instance);
+            },
+            TaskScheduler.FromCurrentSynchronizationContext());
+
+        // This will break any postfix patches from other mods. We could transpile the method instead to allow
+        // them to run, but since postfixes would likely rely on the original Awake running they'd break anyway.
+        return false;
     }
+
+    [HarmonyReversePatch]
+    private static void Awake(object instance) => throw new NotImplementedException();
 }
