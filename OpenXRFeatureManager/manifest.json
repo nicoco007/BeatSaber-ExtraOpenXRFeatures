@@ -3,7 +3,7 @@
   "id": "OpenXRFeatureManager",
   "name": "OpenXR Feature Manager",
   "author": "nicoco007",
-  "version": "1.0.0+dev",
+  "version": "1.0.1+dev",
   "description": "Manages adding OpenXR features at runtime.",
   "gameVersion": "1.29.4",
   "dependsOn": {
