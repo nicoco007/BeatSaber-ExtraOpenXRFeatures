@@ -3,7 +3,7 @@
   "id": "OpenXRHands",
   "name": "OpenXR Hands",
   "author": "nicoco007",
-  "version": "1.0.0+dev",
+  "version": "1.0.1+dev",
   "description": "Adds hand/finger tracking support for OpenXR.",
   "gameVersion": "1.29.4",
   "dependsOn": {
