@@ -88,62 +88,62 @@ public class HTCViveTrackerProfile : OpenXRInteractionFeature
             serialNumber = string.Empty,
             deviceInfos = new List<DeviceConfig>()
             {
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerLeftFoot,
                     userPath = TrackerUserPaths.leftFoot,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerRightFoot,
                     userPath = TrackerUserPaths.rightFoot,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerLeftShoulder,
                     userPath = TrackerUserPaths.leftShoulder,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerRightShoulder,
                     userPath = TrackerUserPaths.rightShoulder,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerLeftElbow,
                     userPath = TrackerUserPaths.leftElbow,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerRightElbow,
                     userPath = TrackerUserPaths.rightElbow,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerLeftKnee,
                     userPath = TrackerUserPaths.leftKnee,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerRightKnee,
                     userPath = TrackerUserPaths.rightKnee,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerWaist,
                     userPath = TrackerUserPaths.waist,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerChest,
                     userPath = TrackerUserPaths.chest,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerCamera,
                     userPath = TrackerUserPaths.camera,
                 },
-                new DeviceConfig()
+                new()
                 {
                     characteristics = InputDeviceCharacteristics.TrackedDevice | (InputDeviceCharacteristics)InputDeviceTrackerCharacteristics.TrackerKeyboard,
                     userPath = TrackerUserPaths.keyboard,
@@ -151,7 +151,7 @@ public class HTCViveTrackerProfile : OpenXRInteractionFeature
             },
             actions = new List<ActionConfig>()
             {
-                new ActionConfig()
+                new()
                 {
                     name = "devicePose",
                     localizedName = "Device Pose",
@@ -162,7 +162,7 @@ public class HTCViveTrackerProfile : OpenXRInteractionFeature
                     },
                     bindings = new List<ActionBinding>()
                     {
-                        new ActionBinding()
+                        new()
                         {
                             interactionPath = TrackerComponentPaths.grip,
                             interactionProfileName = interactionProfileName,
