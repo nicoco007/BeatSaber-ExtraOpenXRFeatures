@@ -69,7 +69,7 @@ namespace OpenXRFeatureManager
         /// <param name="name">Name of the feature.</param>
         /// <param name="version">Version of the feature.</param>
         /// <param name="company">Name of the company/developer(s) that created the feature.</param>
-        /// <param name="openXRExtensionStrings">A comma-separated list of OpenXR extensions that are necessary for the feature to work.</param>
+        /// <param name="openXRExtensionStrings">A space-separated list of OpenXR extensions that are necessary for the feature to work.</param>
         /// <param name="priority">
         /// Determines the order in which the feature will be called in both the GetInstanceProcAddr hook list and
         /// when events such as OnInstanceCreate are called. Higher priority features will hook after lower priority features and
