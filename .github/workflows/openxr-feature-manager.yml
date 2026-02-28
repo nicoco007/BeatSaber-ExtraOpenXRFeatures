@@ -5,7 +5,7 @@ on:
     paths:
     - .github/workflows/build-openxr-feature-manager.yml
     - OpenXRFeatureManager/**
-    - ExtraOpenXRFeatures.sln
+    - ExtraOpenXRFeatures.slnx
     branches:
     - '**'
     tags:

@@ -5,7 +5,7 @@ on:
     paths:
     - .github/workflows/build-openxr-tracker-profiles.yml
     - OpenXRTrackerProfiles/**
-    - ExtraOpenXRFeatures.sln
+    - ExtraOpenXRFeatures.slnx
     branches:
     - '**'
     tags:
