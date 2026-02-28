@@ -1,0 +1,18 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="LICENSE.txt" />
+    <File Path="NuGet.Config" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="OpenXRFeatureManager/OpenXRFeatureManager.csproj" />
+  <Project Path="OpenXRHands/OpenXRHands.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="OpenXRTrackerProfiles/OpenXRTrackerProfiles.csproj" />
+</Solution>
