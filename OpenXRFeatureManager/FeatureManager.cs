@@ -77,7 +77,7 @@ namespace OpenXRFeatureManager
         /// </param>
         /// <param name="required">True if this feature is required, false otherwise. Required features will cause the loader to fail to initialize if they fail to initialize or start.</param>
         /// <returns>The newly created feature.</returns>
-        public static T CreateOpenXRFeature<T>(string featureId, string? name = null, string version = "0.0.1", string? company = null, string? openXRExtensionStrings = null, int priority = 0, bool required = false)
+        public static T CreateOpenXRFeature<T>(string featureId, string? name = null, string? version = null, string? company = null, string? openXRExtensionStrings = null, int priority = 0, bool required = false)
             where T : OpenXRFeature
         {
             T feature = ScriptableObject.CreateInstance<T>();
