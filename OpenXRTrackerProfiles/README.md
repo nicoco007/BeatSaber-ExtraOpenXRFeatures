@@ -4,9 +4,6 @@
 
 A Beat Saber mod that adds profiles to OpenXR to support more devices such as Vive Trackers.
 
-> [!NOTE]
-> There is currently a limitation in Unity's OpenXR implementation that prevents trackers from being recognized if turned on **after** the game is started. If you do this, you will need to restart the game before trackers are recognized in-game. [This Unity Forum thread](https://forum.unity.com/threads/openxr-detecting-vive-tracker-connection-after-launching-the-app.1418659/) is the latest information I could find regarding the situation. There is unfortunately nothing I can do about this since from what I've gathered this is an issue on the native side.
-
 ## Installation
 Simply put `OpenXRTrackerProfiles.dll` in your game's `Plugins` folder. There is no additional configuration necessary on the game's side.
 
