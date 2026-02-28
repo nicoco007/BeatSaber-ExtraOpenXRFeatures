@@ -14,6 +14,7 @@
 // </copyright>
 
 using IPA;
+using IPA.Loader;
 using OpenXRFeatureManager;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Hands.OpenXR;
@@ -35,8 +36,9 @@ public class Plugin
 
         featureManager.beforeOpenXRReloaded += OnBeforeOpenXRReloaded;
 
-        featureManager.RegisterFeature(FeatureManager.CreateOpenXRFeature<HandTracking>(HandTracking.featureId, company: "Unity", openXRExtensionStrings: HandTracking.extensionString, priority: -100));
-        featureManager.RegisterFeature(FeatureManager.CreateOpenXRFeature<MetaHandTrackingAim>(MetaHandTrackingAim.featureId, company: "Unity", openXRExtensionStrings: MetaHandTrackingAim.extensionString));
+        string xrHandsVersion = PluginManager.GetPluginFromId("Unity.XR.Hands").HVersion.ToString();
+        featureManager.RegisterFeature(FeatureManager.CreateOpenXRFeature<HandTracking>(HandTracking.featureId, null, xrHandsVersion, "Unity", HandTracking.extensionString, -100));
+        featureManager.RegisterFeature(FeatureManager.CreateOpenXRFeature<MetaHandTrackingAim>(MetaHandTrackingAim.featureId, null, xrHandsVersion, "Unity", MetaHandTrackingAim.extensionString));
     }
 
     [OnExit]

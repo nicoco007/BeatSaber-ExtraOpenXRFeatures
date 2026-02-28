@@ -32,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Hive.Versioning" />
     <Reference Include="IPA.Loader" />
     <Reference Include="Main" />
     <Reference Include="Unity.InputSystem" />
