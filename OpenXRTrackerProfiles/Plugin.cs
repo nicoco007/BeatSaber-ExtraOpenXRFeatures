@@ -14,6 +14,7 @@
 // </copyright>
 
 using IPA;
+using IPA.Loader;
 using OpenXRFeatureManager;
 using OpenXRTrackerProfiles.Features;
 using Logger = IPA.Logging.Logger;
@@ -23,10 +24,13 @@ namespace OpenXRTrackerProfiles;
 [Plugin(RuntimeOptions.SingleStartInit)]
 public class Plugin
 {
+    private readonly PluginMetadata _metadata;
+
     [Init]
-    public Plugin(Logger logger)
+    public Plugin(Logger logger, PluginMetadata metadata)
     {
         log = logger;
+        _metadata = metadata;
     }
 
     internal static Logger log { get; private set; } = null!;
@@ -34,7 +38,7 @@ public class Plugin
     [OnStart]
     public void OnStart()
     {
-        FeatureManager.instance.RegisterFeature(FeatureManager.CreateOpenXRFeature<HTCViveTrackerProfile>(HTCViveTrackerProfile.featureId, name: HTCViveTrackerProfile.uiName, company: "nicoco007", openXRExtensionStrings: HTCViveTrackerProfile.extensionString));
+        FeatureManager.instance.RegisterFeature(FeatureManager.CreateOpenXRFeature<HTCViveTrackerProfile>(HTCViveTrackerProfile.featureId, null, _metadata.HVersion.ToString(), _metadata.Author, HTCViveTrackerProfile.extensionString));
     }
 
     [OnExit]
