@@ -6,7 +6,7 @@
     <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <WarningsAsErrors>nullable</WarningsAsErrors>
-    <Copyright>Copyright © nicoco007 2023-2024</Copyright>
+    <Copyright>Copyright © nicoco007 2023-2026</Copyright>
     <Platforms>x64</Platforms>
     <Platform>x64</Platform>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
