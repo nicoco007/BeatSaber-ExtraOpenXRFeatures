@@ -4,6 +4,7 @@ on:
   push:
     paths:
     - .github/workflows/build-openxr-hands.yml
+    - OpenXRFeatureManager/**
     - OpenXRHands/**
     - ExtraOpenXRFeatures.slnx
     branches:

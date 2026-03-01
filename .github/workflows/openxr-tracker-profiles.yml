@@ -4,6 +4,7 @@ on:
   push:
     paths:
     - .github/workflows/build-openxr-tracker-profiles.yml
+    - OpenXRFeatureManager/**
     - OpenXRTrackerProfiles/**
     - ExtraOpenXRFeatures.slnx
     branches:
